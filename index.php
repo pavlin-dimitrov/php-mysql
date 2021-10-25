@@ -82,7 +82,7 @@ if(isset($_POST['submit-login'])){
 				$_SESSION['field'] = $field;
 				$_SESSION['motels'] = 0;
 				$_SESSION['vso_field'] = 0;
-				$_SESSION['event'] = "<span style='font-size: 16px;'>Welcome to iT-Village, $username! You always start the game with 50 coins and some random moves Press the button to the right to throw the dice and read the text here to understand what it is going on, you will manage!</span>";
+				$_SESSION['event'] = "<span style='font-size: 16px;'>Welcome to iT-Village, $username! You have 50 coins and $moves moves. Press the button to throw the dice.</span>";
 			} else {
 				echo "<p class='err-msg'>Please check username/password!</p>";
 			}
@@ -122,33 +122,24 @@ if (isset($_POST['submit-register'])){
 					}
 				}
 			}
-		if ($dublication != 0) { //if name and password are both in use
+		if ($dublication != 0) {
 			echo '<div class="err-msg">'.'There is already such a user!'.'</div>';
-		} elseif ($name_in_use != 0 && $pass_in_use == 0) { //if only username is in use
+		} elseif ($name_in_use != 0 && $pass_in_use == 0) {
 			echo '<div class="err-msg">'.'This USERNAME already exists!'.'</div>';
-		} elseif ($name_in_use == 0 && $pass_in_use != 0) { //if only password is in use
+		} elseif ($name_in_use == 0 && $pass_in_use != 0) {
 			echo '<div class="err-msg">'.'This PASSWORD already exists!'.'</div>';
-		} elseif (strlen($username) < 4) { //ако потр. име е по-кратка от 4 символа
+		} elseif (strlen($username) < 4) {
 			echo '<div class="err-msg">'.'The USERNAME can not be less<br>than 4 symbols!'.'</div>';
-		} elseif (strlen($username) > 20) { //ако потр. име е по-дълго от 20 символа
+		} elseif (strlen($username) > 20) {
 			echo '<div class="err-msg">'.'The USERNAME can not be more<br>than 20 symbols!'.'</div>';
-		} elseif (strlen($password_r) < 4) { //ако паролата е по-кратка от 4 символа
+		} elseif (strlen($password_r) < 4) {
 			echo '<div class="err-msg">'.'The PASSWORD can not be less<br>than 4 symbols!'.'</div>';
-		} elseif (strlen($password_r) > 20) { //ако паролата е по-дълка от 20 символа
+		} elseif (strlen($password_r) > 20) {
 			echo '<div class="err-msg">'.'The PASSWORD can not be more<br>than 20 symbols!'.'</div>';
 		} else {
 			$pass_hashed = password_hash($password_r, PASSWORD_DEFAULT);
 			$insert_query = "INSERT INTO users(username, password) VALUES ('$username', '$pass_hashed')";
-			$insert_result = mysqli_query($connection, $insert_query);
-					//	$_SESSION['money'] = 50;
-					//$moves = rand(5, 15);
-					//$field = rand(1, 12);
-					//$_SESSION['moves'] = $moves;
-					//$_SESSION['field'] = $field;
-					//$_SESSION['motels'] = 0;
-					//$_SESSION['vso_field'] = 0;
-					//$_SESSION['event'] = "<span style='font-size: 16px;'>Welcome to iT-Village, $username! You always start the game with 50 coins and some random moves Press the button to the right to throw the dice and read the text here to understand what it is going on, you will manage!</span>";
-					//echo "<div class='err-msg'>Please, Login to your profile!</div>";		
+			$insert_result = mysqli_query($connection, $insert_query);		
 		}
 	} 
 }
