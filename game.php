@@ -22,14 +22,6 @@ if (isset($_POST['play'])) {
 	unset($_SESSION['dice_num']);
 	header('Location: game.php');
 }
-// GET GAME STATISTIC
-$read_query = "SELECT * FROM users WHERE username = '$username'";
-$result_query = mysqli_query($connection, $read_query);
-$result_row = mysqli_fetch_assoc($result_query);
-
-$played_games = $result_row['played_games'];
-$victories = $result_row['victories'];
-$defeats = $result_row['defeats'];
 // THROW THE DICE & GET NEW NUMBERS & EVENTS
 if (isset($_POST['throw_dice'])) {
 	$dice_num = rand(1, 6);
@@ -59,28 +51,33 @@ if (isset($_POST['throw_dice'])) {
 			vso();
 	}
 	// CONDITIONS FOR END OF THE GAME
+$victories = 0;
+$defeats = 0;
 	if ($_SESSION['vso_field'] == 1) {
 		vso_win();
-			$played_games += 1;
-			$victories += 1;
+			$victories = 1;
+			$defeats = 0;
 	} elseif ($_SESSION['motels'] == 3) {
 		own_all_motels();
-			$played_games += 1;
-			$victories += 1;
+			$victories = 1;
+			$defeats = 0;
 	} elseif ($_SESSION['money'] == 0) {
 		lose_no_money();
-			$played_games += 1;
-			$defeats += 1;
+			$defeats = 1;
+			$victories = 0;
 	} else if ($_SESSION['moves'] == 0) {
 		lose_no_moves();
-			$played_games += 1;
-			$defeats += 1;
+			$defeats = 1;
+			$victories = 0;
 	}
 
 	$_SESSION['field'] = $field;
+	$user_id = $_SESSION['id'];
 
-	$update_query = "UPDATE users SET played_games = $played_games, victories = $victories, defeats = $defeats WHERE username = '$username'";
-	$update_result = mysqli_query($connection, $update_query);
+	if($victories != 0 || $defeats != 0){
+		$update_query = "INSERT INTO results (`id`, `victories`, `defeats`) VALUES ('$user_id', '$victories', '$defeats' )";
+		$update_result = mysqli_query($connection, $update_query);
+	}
 }
 
 $fields_name = array(1 => 'WiFi Pub', 
@@ -169,8 +166,8 @@ $fields_name = array(1 => 'WiFi Pub',
 			</div>
 			<div>
 				<form method="post">
-					<input style="<?php if($_SESSION['moves'] <= 0){ 
-										echo 'display: none';};?>" class="throw_dice log-btn btn1" type="submit" name="throw_dice" value="THROW">
+					<input id="3" type="<?php if(isset($_SESSION['hide_btn_throw'])){ 
+										echo 'hidden';} else {echo'submit';};?>" style="visibility: hidden;" class="throw_dice log-btn btn1" name="throw_dice" value="THROW">
 				</form>
 			</div>
 		</div>
@@ -184,5 +181,8 @@ $fields_name = array(1 => 'WiFi Pub',
 			setTimeout(function(){
 				document.getElementById('0').style.visibility = "visible";
 			}, 2900);
+			setTimeout(function(){
+				document.getElementById('3').style.visibility = "visible";
+			}, 8000);
 </script>
 <?php include("includes/footer.php");?>

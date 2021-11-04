@@ -7,7 +7,8 @@ include('includes/header.php');
 	<div class="result-image"></div>
 
 	<?php
-	$read_query = "SELECT username, played_games, victories, defeats FROM users ORDER BY victories DESC";
+	// NEW 
+	$read_query = "SELECT u.username, count(r.id) AS 'Played Games', sum(r.victories) AS VICTORIES, sum(r.defeats) AS DEFEATS FROM `results` r JOIN users u ON (u.id = r.id) GROUP BY r.id ORDER BY r.victories DESC";
 	$result = mysqli_query($connection, $read_query);
 	if (mysqli_num_rows($result) > 0) {
 		echo "<div class='table-wrapper-scroll-y my-custom-scrollbar'>"; 	
@@ -27,9 +28,9 @@ include('includes/header.php');
 			echo "<tr>";
 				echo "<td>".$num++."</td>";
 				echo "<td>".$row['username']."</td>";
-				echo "<td>".$row['played_games']."</td>";
-				echo "<td>".$row['victories']."</td>";
-				echo "<td>".$row['defeats']."</td>";
+				echo "<td>".$row['Played Games']."</td>";
+				echo "<td>".$row['VICTORIES']."</td>";
+				echo "<td>".$row['DEFEATS']."</td>";
 			echo "</tr>";
 		}
 		echo "</tbody>";
@@ -39,12 +40,12 @@ include('includes/header.php');
 		echo "NO RECORDS FOUND !";
 	}
 	?>
-		<div>
+	
+</div>
+	<div>
 		<a href="game.php" class="log-btn res-btn-g">GAME</a>
 		<a href="exit.php" class="log-btn res-btn-e">EXIT</a>
-	</div>	
-</div>
-
+	</div>
 <?php
 include('includes/footer.php');
 ?>
