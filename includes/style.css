@@ -149,9 +149,11 @@ body {
   clear: both;
 }
 .lds-dual-ring {
+  position: relative;
   display: inline-block;
   width: 80px;
   height: 80px;
+  top: 60px;
 }
 .lds-dual-ring:after {
   content: " ";
@@ -232,35 +234,35 @@ h2{
 .col1 { /* main div */
   position: relative;
   transform: skew(0deg, 0deg);
-  left: -150px;
+  left: -18px;
   top: 0px;
   z-index: 20;
 }
 .col2 { /* main div */
   position: relative;
   transform: skew(0deg, 0deg);
-  left: -50px;
+  left: -7px;
   top: 0px;
   z-index: 20;
 }
 .col3 { /* main div */
   position: relative;
   transform: skew(0deg, 0deg);
-  left: 50px;
+  left: 4px;
   top: 0px;
   z-index: 20;
 }
 .col4 { /* main div */
   position: relative;
   transform: skew(0deg, 0deg);
-  left: 150px;
+  left: 15px;
   top: 0px;
   z-index: 20;
 }
 .col5 { /* main div */
   position: relative;
   transform: skew(0deg, 0deg);
-  left: 16em;
+  left: 4em;
   top: 0px;
   z-index: 20;
 }
@@ -292,7 +294,7 @@ h2{
 }
 .info-item, .info-dice {
   text-align: center;
-  height: 20em;
+  height: 16em;
   width: 22em;
   vertical-align: middle;
   line-height: 1.25em;
@@ -332,7 +334,7 @@ h2{
   transform: rotate(90deg) skew(0, 45deg);
 }
 .info-item:before, .info-dice:before {
-  height: 20em;
+  height: 16em;
   top: 0.21em;
   left: -0.5em;
   transform: skewY(-45deg);
@@ -398,7 +400,7 @@ h2{
   }
 }
 .space-between-boxes{
-  height: 4em;
+  height: 0.5em;
 }
 .empty-fields{
   height: 8em;
@@ -408,10 +410,16 @@ h2{
   padding-top: 20px;
   padding-left: 39px;
 }
+.empty-dice{
+  height: 16em;
+  width: 10em;
+}
 .throw_dice{
-  position: sticky;
-  top: 3.5em;
-  left: -11em;
+  /*position: sticky;*/
+  top: -2.5em;
+  left: 1em;
+  height: 1.5em;
+  width: 7em;
 }
 .game-info{
   padding: 20px;
@@ -448,7 +456,7 @@ h2{
 .controls{
     position: fixed;
     left: 80px;
-    top: 285px
+    top: 5px
 }
 .controls_btn{
     color: #f1b8a6;
@@ -513,7 +521,7 @@ h2{
 }
 .game-gen-info{
   position: relative;
-  top: 19%;
+  top: 11%;
 }
 .row1, .row2{
   display: inline-flex;
@@ -602,4 +610,44 @@ display: block;
   width: 6em;
   top: 59%;
   left: 53%;
+}
+.info-item-about{
+  background: #201f1f;
+  color: #f1b8a6;
+  border: 0.5px solid #060606;
+  box-shadow: -2em 1.5em 8px #0606067d;
+}
+
+.info-item-about {
+  text-align: center;
+  height: 14em;
+  width: 16em;
+  vertical-align: middle;
+  line-height: 0.9em;
+  position: relative;
+  display: block;
+  text-decoration: none;
+  transition: all 0.25s linear;
+  z-index: 22;
+}
+.info-item-about:before, .info-item-about:after {
+  content: "";
+  position: absolute;
+  transition: all 0.25s linear;
+  width: 0.5em;
+}
+.info-item-about:after, .info-item-about:before {
+  background: #060606;
+}
+.info-item-about:after {
+  height: 16em;
+  bottom: -8.29em;
+  left: 7.489em;
+  transform: rotate(90deg) skew(0, 45deg);
+}
+.info-item-about:before {
+  height: 14em;
+  top: 0.21em;
+  left: -0.5em;
+  transform: skewY(-45deg);
 }

@@ -18,7 +18,7 @@
 				</div>
 				<div class="log-buttons">
 					<div><input class="log-btn btn1" type="submit" name="submit-login" value="Login"></div>
-					<div><input class="log-btn btn2" type="submit" name="home" value="Home"></div>
+					<div style="margin-bottom: 40px"><input class="log-btn btn2" type="submit" name="home" value="Home"></div>
 				</div>
 			</form>
 		<div 

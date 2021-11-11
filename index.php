@@ -14,9 +14,14 @@
 				<div class="log-buttons">
 					<div><input class="log-btn btn1" type="submit" name="submit-login" value="Login"></div>
 					<div><input class="log-btn btn2" type="submit" name="submit-register" value="Register"></div>
-					<div><input class="log-btn btn2" type="submit" name="about" value="About"></div>
+					<div style="margin-bottom: 92.2px"><input class="log-btn btn2" type="submit" name="about" value="About"></div>
 				</div>
 			</form>
+		<div 
+			style="<?php if(isset($_POST['submit-register'])){echo 'display: none';};?>" 
+			id="welcome" 
+			class="err-msg">Welcome to IT-Village!
+		</div>
 		</div>
 <?php
 if (isset($_POST['about'])) {

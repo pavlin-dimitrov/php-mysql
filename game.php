@@ -97,7 +97,7 @@ $fields_name = array(1 => 'WiFi Pub',
 		<div class="texture"></div>
 		<div class="game-background-image"></div>
 
-	<div class="col1">
+	<div style="z-index: 50;" class="col1">
 		<div class="list-item <?php if ($_SESSION['field'] == 1) { echo 'on-event'; }?>"><img alt="bar" src="images/bar.png"></div>
 		<div class="space-between-boxes"></div>
 		<div class="list-item <?php if ($_SESSION['field'] == 12) { echo 'on-event'; }?>"><img alt="bar" src="images/bar.png"></div>
@@ -107,7 +107,7 @@ $fields_name = array(1 => 'WiFi Pub',
 		<div class="list-item <?php if ($_SESSION['field'] == 10) { echo 'on-event'; }?>"><img alt="motel" src="images/hotel.png"><a></a></div>
 	</div>
 
-	<div class="col2">
+	<div style="z-index: 40;" class="col2">
 		<div class="list-item <?php if ($_SESSION['field'] == 2) { echo 'on-event'; }?>"><img alt="motel" src="images/hotel.png"></div>
 		<div class="space-between-boxes"></div>
 		<div class="empty-fields"></div>
@@ -117,7 +117,7 @@ $fields_name = array(1 => 'WiFi Pub',
 		<div class="list-item <?php if ($_SESSION['field'] == 9) { echo 'on-event'; }?>"><img alt="freelance" src="images/freelance.png"></div>
 	</div>
 
-	<div class="col3">
+	<div style="z-index: 30;" class="col3">
 		<div class="list-item <?php if ($_SESSION['field'] == 3) { echo 'on-event'; }?>"><img alt="freelance" src="images/freelance.png"></div>
 		<div class="space-between-boxes"></div>
 		<div class="empty-fields"></div>
@@ -140,7 +140,7 @@ $fields_name = array(1 => 'WiFi Pub',
 		<div class="info-item">
 			<div id="1" class="lds-dual-ring" style="visibility: visible;"></div>
 			<div id="0" class="game-info" style="visibility: hidden">
-				<div style="padding-bottom: 20px;">
+				<div style="padding-bottom: 20px; position: relative; top: -70px">
 					 <span><img alt="cash" src="images/cash.png"></span>&nbsp&nbsp<?=$_SESSION['money']?> &nbsp|&nbsp 
 					 <span><img alt="steps" src="images/steps.png"></span>&nbsp<?=$_SESSION['moves']?> &nbsp|&nbsp 
 					 <span><i class="fa fa-map-marker" aria-hidden="true" style="color: white;"></i></span>
@@ -158,13 +158,14 @@ $fields_name = array(1 => 'WiFi Pub',
 		<div class="space-between-boxes"></div>
 		<div class="info-dice">
 
-			<div class="dice">
+			<div class="<?php if(isset($_SESSION['dice_num'])){ 
+										echo 'dice';} else {echo'empty-dice';};?>">
 				<?php if (isset($_SESSION['dice_num'])) {
 					$path = "images/dice_".$_SESSION['dice_num'].".gif";
 					echo "<img alt='dice' class='dice_img' src='$path' alt='images/dice*.gif'>";
 				}?>
 			</div>
-			<div>
+			<div class="throw_btn_div">
 				<form method="post">
 					<input id="3" type="<?php if(isset($_SESSION['hide_btn_throw'])){ 
 										echo 'hidden';} else {echo'submit';};?>" style="visibility: hidden;" class="throw_dice log-btn btn1" name="throw_dice" value="THROW">
