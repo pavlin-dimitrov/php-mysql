@@ -20,7 +20,7 @@ if (isset($_POST['play'])) {
 	unset($_SESSION['hide_play']);
 	unset($_SESSION['hide_btn_throw']);
 	unset($_SESSION['dice_num']);
-	header('Location: game.php');
+	//header('Location: game.php');
 }
 // THROW THE DICE & GET NEW NUMBERS & EVENTS
 if (isset($_POST['throw_dice'])) {

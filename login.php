@@ -70,7 +70,7 @@ if(isset($_POST['submit-login'])){
 				$_SESSION['field'] = $field;
 				$_SESSION['motels'] = 0;
 				$_SESSION['vso_field'] = 0;
-				$_SESSION['event'] = "<span style='font-size: 16px;'>Welcome to iT-Village, $username! You have 50 coins and $moves moves. Press the button to throw the dice!</span>";
+				$_SESSION['event'] = "<span style='font-size: 16px;'>Welcome, $username! You have 50 coins and $moves moves. Throw the dice!</span>";
 			} else {
 				echo "<p class='err-msg'>Please check username/password!</p>";
 			}

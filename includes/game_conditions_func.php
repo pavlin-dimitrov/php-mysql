@@ -2,7 +2,7 @@
 // FIELDS CONDITION
 function pub_field(){
 	$_SESSION['event'] = "<span style='font-size: 24px;'>WiFi Pub: You are buying an \"Cloud\" cocktail -5 Coins</span>";
-	$_SESSION['money'] = max(0, $_SESSION['money'] - 5);
+	$_SESSION['money'] = $_SESSION['money'] - 5;
 }
 
 function buy_motel(){
@@ -13,7 +13,7 @@ function buy_motel(){
 
 function pay_per_night(){
 	$_SESSION['event'] = '<span style="font-size: 24px;">Motel: You don\'t have enough money to buy it. You must pay for the night -10 coins</span>';
-	$_SESSION['money'] = max(0, $_SESSION['money'] - 10);
+	$_SESSION['money'] = $_SESSION['money'] - 10;
 }
 
 function freelance_project(){
@@ -23,7 +23,7 @@ function freelance_project(){
 
 function storm(){
 	$_SESSION['event'] = "<span style='font-size: 24px;'>Storm: There is no WiFi in the village and you are depressed, you are -2 dice throws!</span>";
-	$_SESSION['moves'] = max(0, $_SESSION['moves'] - 2);
+	$_SESSION['moves'] = $_SESSION['moves'] - 2;
 }
 
 function superphp(){
