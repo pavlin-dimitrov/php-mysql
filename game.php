@@ -51,16 +51,16 @@ if (isset($_POST['throw_dice'])) {
 			vso();
 	}
 	// CONDITIONS FOR END OF THE GAME
-$victories = 0;
-$defeats = 0;
+	$victories = 0;
+	$defeats = 0;
 	if ($_SESSION['vso_field'] == 1) {
 		vso_win();
-			$victories = 1;
-			$defeats = 0;
+		$victories = 1;
+		$defeats = 0;
 	} elseif ($_SESSION['motels'] == 3) {
 		own_all_motels();
-			$victories = 1;
-			$defeats = 0;
+		$victories = 1;
+		$defeats = 0;
 	} elseif ($_SESSION['money'] == 0) {
 		lose_no_money();
 			$defeats = 1;
