@@ -53,7 +53,7 @@ INSERT INTO `results` (`result_id`, `id`, `victories`, `defeats`) VALUES
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `username` varchar(25) NOT NULL,
+  `username` varchar(20) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
